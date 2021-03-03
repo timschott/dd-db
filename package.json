@@ -1,4 +1,3 @@
-
 {
 	"author": "Tim Schott",
 	"name": "dd-db",
@@ -15,7 +14,9 @@
 		"postmodernism",
 		"digital humanities"
 	],
-	"dependencies": {},
+	"dependencies": {
+		"express": "^4.17.1"
+	},
 	"engines": {
 		"node": "*"
 	}
