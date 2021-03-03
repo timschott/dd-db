@@ -1,0 +1,10 @@
+*.project
+*.tgz
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+package-lock.json
+package/
+examples/
+*.pem
