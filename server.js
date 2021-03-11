@@ -24,3 +24,9 @@ app.get('/api/customers-test', (req, res) => {
 
   res.json(customers);
 })
+
+// test homepage
+app.get('/', (req, res) => {
+  const hello = "HELLO!";
+  res.json(hello);
+})
