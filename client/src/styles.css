@@ -35,6 +35,10 @@ html {
 
 /** Headings **/
 
+.app-header {
+  text-align: center;
+}
+
 h1,
 h2,
 h3,
@@ -161,7 +165,7 @@ h5 {
   color: var(--link-color);
 }
 
-.navbar .flex {
+.navbar .flex-item {
   justify-content: space-between;
 }
 
@@ -186,23 +190,17 @@ h5 {
   }
 }
 
-/** container **/
+/** flex container **/
 
-.nav-container {
+.flex-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 
-.content-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/** customer items **/ 
-.customer-items {
-  flex: 50 50 0
+.flex-item {
+  width: auto;
 }
 
 /** dark mode button **/
@@ -218,4 +216,14 @@ h5 {
 
 #dark-mode-button:focus {
   outline: none;
+}
+
+
+/** customers (todo, change) **/
+.customer-banner {
+  text-align: center;
+}
+
+.customer-content {
+  display:inline-block;
 }
