@@ -9,13 +9,11 @@ render() {
         <nav className="navbar">
             <div className="container">
                 <div className="flex">
-                    <div>
-                        <Link to="/">Home</Link>
-                    </div>
-                </div>
-                <div className="flex">
+                    <div className="flex">
+                    <Link to="/">Home</Link>
                     <Link to="/">Customer Test</Link>
-                </div>
+                    </div>
+                    </div>
             </div>
         </nav>
         </Router>

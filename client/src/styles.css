@@ -33,25 +33,147 @@ html {
     line-height: 1.5;
 }
 
-/** Breakpoints, based on Bootstrap's sizing params **/
+/** Headings **/
 
-/* Media query with a tiny breakpoint */
-
-@media screen and (min-width: 576px){
-
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--heading-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Media query with a small breakpoint */
-@media screen and (min-width: 768px){
-
+h1:not(:first-child),
+h2:not(:first-child),
+h3:not(:first-child),
+h4:not(:first-child) {
+  margin-top: 3rem;
 }
 
-/* Media query with a medium breakpoint */
-@media screen and (min-width: 992px){
-
+h1 {
+  font-size: 2.0rem;
+  line-height: 1.1;
 }
 
-/* Media query with a large breakpoint */
-@media screen and (min-width: 1200px){
+h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+}
 
+h2 code {
+  font-size: 1.75rem !important;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: var(--font-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: var(--font-color);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+h5 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/** headings media queries **/
+
+@media screen and (min-width: 300px) {
+    h1 {
+        padding-top: 3.0rem;
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.0rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 1.8rem;
+    padding-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h2 code {
+    font-size: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--font-color);
+    font-weight: 600;
+  }
+
+  h3 code {
+    font-size: 1.5rem !important;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 1.25rem;
+  }
+}
+
+/** NavBar **/
+  
+.emoji {
+    margin: 0 0.4rem 0 0.1rem;
+}
+  
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 13px rgba(100, 110, 140, 0.1),
+      0 2px 4px rgba(100, 110, 140, 0.15);
+    z-index: 2;
+    padding: 0.5rem;
+}
+  
+.navbar .flex {
+    justify-content: space-between;
+}
+    
+/** nav bar media queries **/
+@media screen and (min-width: 300px) {
+    .navbar a {
+      font-size: 1.1rem;
+      padding: 0.5rem;
+    }
+}
+    
+@media screen and (min-width: 800px) {
+    main {
+        margin-top: 0;
+    }
+
+    .emoji {
+      margin: 0 0.5rem 0 0.1rem;
+    }
+    .navbar {
+      position: static;
+      padding: 1.5rem 0;
+    }
+  
+    .navbar .flex {
+      justify-content: space-between;
+    }
 }
