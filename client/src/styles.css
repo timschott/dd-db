@@ -159,10 +159,15 @@ h5 {
   font-weight: 400;
   color: var(--font-color);
   text-decoration: none;
+  padding-right: 3.5rem;
 }
 
 .navbar a:hover {
   color: var(--link-color);
+}
+
+#dark-mode-button:hover {
+  background: var(--light-background);
 }
 
 .navbar .flex-item {
@@ -173,7 +178,6 @@ h5 {
 @media screen and (min-width: 300px) {
   .navbar a {
     font-size: 1.1rem;
-    padding-right: 0.5rem;
   }
 }
   
