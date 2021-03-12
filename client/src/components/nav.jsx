@@ -8,10 +8,11 @@ render() {
         <Router>
         <nav className="navbar">
             <div className="container">
-                <div className="flex">
+                <div className="nav-container">
                     <div className="flex">
-                    <Link to="/">Home</Link>
-                    <Link to="/">Customer Test</Link>
+                    <Link to="/" class="nav-item">Home</Link>
+                    <Link to="/" class="nav-item">About</Link>
+                    <button id="dark-mode-button">🌙</button>
                     </div>
                     </div>
             </div>
