@@ -1,7 +1,6 @@
 import React from 'react';
 import Customers from './components/customers';
 import Nav from './components/nav';
-import "./styles.css";
 
 function App() {
   return (

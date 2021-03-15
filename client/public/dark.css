@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 /* Colors */
+
 :root {
-    --font-color: #495057;
-    --heading-color: #343a40;
-    --background: white;
-    --dark-font-color: #1b1d25;
-    --medium-font-color: #60656c;
-    --light-font-color: #787f87;
-    --light-background: #f6f8fb;
-    --lighter-background: #e6e8eb;
-    --border: #d6d9de;
-    --link-color: #5c7cfa;
-    --link-color-darker: #3b5bdb;
-    --navbar-color: #4c6ef5;
-    --blockquote: #edf2ff;
-    --transparent-text: rgba(0, 0, 0, 0.7);
-    --transparent-bg: rgba(0, 0, 0, 0.15);
-    --code-font-family: Menlo, 'Roboto Mono', Courier New, monospace;
+    --font-color: #b3b9c5;
+    --heading-color: #ffd479;
+    --dark-font-color: #ced4da;
+    --background: #1f2022;
+    --medium-font-color: #dee2e6;
+    --light-font-color: #868e96;
+    --light-background: #2D2D31;
+    --light-background-hover: #3b3b3e;
+    --code-background-color:#2e2e30;
+    --border: #404040;
+    --link-color: #6ab0f3;
+    --link-color-darker: #4a72a5;
+    --link-hover-color: #e1a6f2;
+    --navbar-color: #1d1d1d;
+    --blockquote: #2a4661;
+    --transparent-text: rgba(255, 255, 255, 0.7);
+    --transparent-bg: rgba(0, 0, 0, 0.2);
+    --light-transparent-bg: rgba(255, 255, 255, 0.05);
   }
 
-
-/* Common components across screen sizes */
-
-html {
+  html {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto',
       Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI',
       'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -31,6 +31,7 @@ html {
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5;
+    background-color: var(--background);
 }
 
 /** Headings **/
@@ -147,6 +148,7 @@ h5 {
 
 .navbar {
   width: 100%;
+  color: var(--navbar-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -157,7 +159,7 @@ h5 {
 
 .navbar a {
   font-weight: 400;
-  color: var(--font-color);
+  color: var(--transparent-text);
   text-decoration: none;
   padding-right: 3.5rem;
 }

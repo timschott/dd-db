@@ -17,7 +17,7 @@ componentDidMount() {
 render() {
     return (
       <div>
-        <h2 className="customer-banner">Customers</h2>
+        <h2 className="customer-banner">Lads</h2>
         <ul>
         {this.state.customers.map(customer => 
           <li key={customer.id}>{customer.firstName} {customer.lastName}</li>
