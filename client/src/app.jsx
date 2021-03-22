@@ -3,6 +3,7 @@ import Customers from './components/customers';
 import Nav from './components/nav';
 
 function App() {
+
   return (
     <div className="App">
         <Nav />
