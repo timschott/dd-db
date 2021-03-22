@@ -25,6 +25,7 @@ componentDidMount() {
         } else {
             document.body.classList.toggle("light-mode");
         }
+        btn.textContent = currentTheme === "dark" ? "☀️" : "🌙";
     }
 };
 
