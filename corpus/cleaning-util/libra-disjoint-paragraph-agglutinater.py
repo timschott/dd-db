@@ -2,7 +2,7 @@ import regex as re
 
 # python script to fix the issues in Libra. 
 
-f = open('../txts/Libra.txt', 'r')
+f = open('../txts(cleaned)/Libra.txt', 'r')
 
 data = f.read()
 
@@ -39,7 +39,9 @@ for paragraph in libra_list:
 		leading_char = next_first_word[0]
 
 		# join if..... last char is (,;- || a letter) && leading character is a letter
-		if ((trailing_char in punc or trailing_char.isalpha()) and leading_char.isalpha()):
+		# or, if last char is in that group && leading char is a quote.
+		if ((trailing_char in punc or trailing_char.isalpha()) and leading_char.isalpha() 
+			or (trailing_char in punc and leading_char == '"')):
 			# add pairs that need to be merged
 			# add an extra 1 to the right-hand tuple val so slicing is easier later
 			merge_list.append(tuple((index, index+2)))
