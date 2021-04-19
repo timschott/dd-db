@@ -9,6 +9,7 @@ I processed most of these text in Sublime since they mostly came in looking ok. 
 *	regex removed chapter numbers with: `[0-9]+$`
 *	regex removed part numbers with: `PART [A-Z]+`
 *	removed opening and closing blank lines
+*	removed remaining blank lines `(^\s)`
 
 *Libra* (cleaned 4/15)
 *	removed headmatter
