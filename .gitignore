@@ -9,3 +9,4 @@ package-lock.json
 package/
 examples/
 *.pem
+corpus/db-work/.env
