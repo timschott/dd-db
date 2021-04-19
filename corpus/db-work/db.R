@@ -21,8 +21,28 @@ logomances <- logomancing_db$find(query = '{}')
 
 ## great
 
-## now, connect to new db and load data. 
+## connect to new db
 
+dd_db <- mongo(collection = "texts", # table
+                        db = "dddb", # db
+                        url = url_path, 
+                        verbose = TRUE)
+
+
+print(dd_db)
+
+## load texts
+
+americana <- scan("../txts(cleaned)/Americana.txt",what="character",sep="\n")
+
+whitenoise <- scan("../txts(cleaned)/WhiteNoise.txt",what="character",sep="\n")
+
+libra <- scan("../txts(cleaned)/Libra.txt",what="character",sep="\n")
+
+## for each text, create a json block for each paragraph and load into db. 
+
+
+ 
 
 
 
