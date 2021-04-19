@@ -1,6 +1,6 @@
 ## Text Cleaning Changelog
 
-I processed most of these text in Sublime since they mostly came in looking ok. So far *Libra* had the most things to change. Keeping a running log here as I make edits.
+I processed most of these text in Sublime since they mostly came in looking ok. So far, *Libra* had the most things to change. Keeping a running log here as I make edits.
 
 *Americana* (cleaned 4/14)
 *	removed headmatter
@@ -38,3 +38,4 @@ I processed most of these text in Sublime since they mostly came in looking ok. 
 *	removed part numbers
 *	removed section numbers with [0-9]+$
 *	removed part numbers manually (only 3 parts).
+*	removed empty lines
