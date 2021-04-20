@@ -8,30 +8,12 @@ load_dot_env()
 
 url_path = Sys.getenv("MONGO_URI")
 
-## test, make sure connec is working 
+## connect to DDDB
 
-logomancing_db <- mongo(collection = "words", # table
-                  db = "fun-words", # db
-                  url = url_path, 
-                  verbose = TRUE)
-
-print(logomancing_db)
-
-logomances <- logomancing_db$find(query = '{}')
-
-rm(logomancing_db)
-
-## great
-
-## connect to new db
-
-dd_db <- mongo(collection = "texts", # table
-                        db = "dddb", # db
-                        url = url_path, 
-                        verbose = TRUE)
-
-
-print(dd_db)
+dd_db <- mongo(collection = "texts", # Creating collection
+                         db = "dddb", # Creating DataBase
+                         url = url_path, 
+                         verbose = TRUE)
 
 ## load texts
 
@@ -50,8 +32,7 @@ libra <- scan("../txts(cleaned)/Libra.txt",what="character",sep="\n")
 # book
 # dialogue
 
-## test with 3 entries
-libra_content <- libra[1:3]
+libra_content <- libra
 
 # fill dialogue vec
 
@@ -65,17 +46,19 @@ for (i in 1:length(libra_content)) {
   }
 }
 
-libra_book <- rep("Libra", 3)
-libra_para_counter <- seq(1, 3)
+libra_book <- rep("Libra", length(libra_content))
+libra_para_counter <- seq(1, length(libra_content))
 libra_fake_id <- paste0("Libra_",libra_para_counter)
 
 libra_para_matrix <- cbind(libra_fake_id, libra_content, libra_dialogue_vec, libra_book)
 
-libra_para_df_test <- as.data.frame(libra_para_matrix, stringsAsFactors = FALSE)
-colnames(libra_para_df_test) <- c("FakeID", "Content", "Dialogue", "Book")
+libra_para_df <- as.data.frame(libra_para_matrix, stringsAsFactors = FALSE)
+colnames(libra_para_df) <- c("FakeID", "Content", "Dialogue", "Book")
 
 ## commit this to db and see how it looks.
 
+dd_db$insert(libra_para_df)
+# Complete! Processed total of 4743 rows.
 
 
 
