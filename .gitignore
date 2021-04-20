@@ -10,3 +10,5 @@ package/
 examples/
 *.pem
 corpus/db-work/.env
+corpus/db-work/.RData
+corpus/db-work/.Rhistory
