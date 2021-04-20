@@ -112,3 +112,13 @@ colnames(americana_para_df) <- c("FakeID", "Content", "Dialogue", "Book")
 dd_db$insert(americana_para_df)
 # Complete! Processed total of 2602 rows.
 
+# data so far 
+
+data_so_far <- dd_db$find(query = '{}')
+# Imported 10628 records. Simplifying into dataframe...
+
+rm(dd_db)
+
+
+
+
