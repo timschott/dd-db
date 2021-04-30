@@ -1,17 +1,23 @@
 import React from 'react';
-import Customers from './components/customers';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import About from './components/about';
+import Error from './components/error';
+import Home from './components/home';
 import Nav from './components/nav';
 
 function App() {
 
   return (
+    <BrowserRouter>
     <div className="App">
-        <Nav />
-          <header className="app-header">
-            <h1 className="app-welcome">This is my app!</h1>
-          </header>
-          <Customers />
-    </div>
+      <Nav />
+        <Switch>
+         <Route path="/" component={Home} exact/>
+         <Route path="/about" component={About}/>
+        <Route component={Error}/>
+       </Switch>
+    </div> 
+  </BrowserRouter>
   );
 }
 

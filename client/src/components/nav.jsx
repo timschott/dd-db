@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Nav extends Component {
 
@@ -53,15 +53,13 @@ darkMode() {
 
 render() {
     return (
-        <Router>
         <nav className="navbar">
             <div className="flex-container">
-                <Link to="/" className="flex-item">Home</Link>
-                <Link to="/" className="flex-item">About</Link>
+                <NavLink to="/" className="flex-item">Home</NavLink>
+                <NavLink to="/about" className="flex-item">About</NavLink>
                 <button id="dark-mode-button" className="flex-item" onClick={this.darkMode}>🌙</button>
             </div>
         </nav>
-        </Router>
     );
   }
 }
