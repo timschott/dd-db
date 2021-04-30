@@ -6,7 +6,6 @@ const port = 8000;
 // create new express app and save it as "app"
 const app = express()
 
-
 // debug
 app.listen(port, () => {
   console.log(`App server now listening to port ${port}`);
@@ -26,7 +25,14 @@ app.get('/api/customers-test', (req, res) => {
 })
 
 // test homepage
-app.get('/', (req, res) => {
-  const hello = "HELLO!";
-  res.json(hello);
+app.get('/api/test-words', (req, res) => {
+  // inject content into FE - React should be able to template this into a file.
+
+  const words = [
+    {id: 1, text: 'Hello', book: 'White Noise'},
+    {id: 2, text: 'Okay', lastName: 'Americana'},
+    {id: 3, text: 'Great', lastName: 'Underworld'},
+  ];
+
+  res.json(words);
 })

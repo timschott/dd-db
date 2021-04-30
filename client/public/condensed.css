@@ -275,3 +275,21 @@ h5 {
 .customer-content {
     display:inline-block;
 }
+
+/** test words (todo, change) **/
+.test-words-banner {
+    text-align: center;
+}
+  
+.test-words-content {
+    display:inline-block;
+}
+
+/** about page **/
+.about-header {
+    text-align:center;
+}
+
+.about-page-content {
+    text-align: center;
+}

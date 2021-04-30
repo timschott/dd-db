@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Customers from '../components/customers';
+import TestWords from '../components/testwords';
  
 const Home = () => {
     return (
@@ -8,7 +8,7 @@ const Home = () => {
         <header className="app-header">
             <h1 className="app-welcome">This is my app!</h1>
         </header>
-        <Customers />
+        <TestWords />
        </div>
     );
 }
