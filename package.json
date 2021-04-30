@@ -17,6 +17,17 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },
+  "keywords": [
+    "books",
+    "literature",
+    "mongodb",
+    "node",
+    "handlebars",
+    "pynchon",
+    "joyce",
+    "nabokov",
+    "heroku"
+  ],
   "scripts": {
     "client-install": "cd client && npm install",
     "start": "node server.js",
