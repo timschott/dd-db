@@ -10,12 +10,11 @@ const app = express()
 const DB_PORT = process.env.PORT || 8080
 
 // connect to database
-
 const MongoClient = require('mongodb').MongoClient
 
 var db
 
-// creds. grab from enviroment var file.
+// creds -  grab from enviroment var file.
 require('dotenv').config({
 
     path: '.env'
@@ -50,15 +49,26 @@ app.get('/api/customers-test', (req, res) => {
   res.json(customers);
 })
 
-// test homepage
-app.get('/api/test-words', (req, res) => {
-  // inject content into FE - React should be able to template this into a file.
+// have db already.
+app.get('/api/test-words', (req, rest) => {
+  db.collection("texts", runQuery);
+});
 
-  const words = [
-    {id: 1, text: 'Hello', book: 'White Noise'},
-    {id: 2, text: 'Okay', lastName: 'Americana'},
-    {id: 3, text: 'Great', lastName: 'Underworld'},
-  ];
 
-  res.json(words);
-})
+function displayContent(cursor, pretty) {
+  
+  cursor.toArray(function(err, itemArr) {
+    var contentList = [];
+    for(var i=0; i<itemArr.length; i++) {
+      contentList.push(itemArr[i].Content);
+    }
+    console.log(JSON.stringify(contentList));
+  });
+}
+
+function runQuery(err, texts) {
+
+  texts.find( { Book: "Libra" }, { _id: 0, FakeID: 0 } , function( err, cursor) {
+    displayContent(cursor.limit(5));
+  });
+}

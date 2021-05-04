@@ -20,7 +20,7 @@ render() {
         <h2 className="test-words-banner">Lads</h2>
         <ul>
         {this.state.words.map(word => 
-          <li key={word.id}>{word.text} {word.book}</li>
+          <li key={word.FakeID}>word.Content</li>
         )}
         </ul>
         <p> those are all the words I have for you.</p>
