@@ -53,15 +53,30 @@ app.get('/api/words', (req, res) => {
 
   var params = req.query;
 
-  console.log(params);
+  var query = {}
 
   if (params.book) {
-    console.log("they asked for this book: " + params.book);
+
   }
+
+  if (params.dialogue) {
+    var dialogue = 'Dialogue'
+    query[dialogue] = [];
+    query[dialogue] = (params.dialogue == "T") ? 1 : 0;
+  }
+
+
+  // essentially, need to make a json object of the query.
+  // filtering....
+  // -> Book=[]
+  // -> Dialogue=T/F
+  // -> Text="SnippetOfWord..."
+
+  // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
 
   db.collection("texts", function(err, texts) {
 
-    texts.find( { Book: "Libra" }, { _id: 0} , function( err, cursor) {
+    texts.find( { Book: "Libra", Dialogue: "1" }, { _id: 0} , function( err, cursor) {
 
       cursor.limit(5).toArray(function(err, itemArr) {
 
