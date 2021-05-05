@@ -49,26 +49,24 @@ app.get('/api/customers-test', (req, res) => {
   res.json(customers);
 })
 
-// have db already.
-app.get('/api/test-words', (req, rest) => {
-  db.collection("texts", runQuery);
-});
+app.get('/api/test-words', (req, res) => {
 
+  db.collection("texts", function(err, texts) {
 
-function displayContent(cursor, pretty) {
-  
-  cursor.toArray(function(err, itemArr) {
-    var contentList = [];
-    for(var i=0; i<itemArr.length; i++) {
-      contentList.push(itemArr[i].Content);
-    }
-    console.log(JSON.stringify(contentList));
-  });
-}
+    texts.find( { Book: "Libra" }, { _id: 0} , function( err, cursor) {
 
-function runQuery(err, texts) {
+      cursor.limit(5).toArray(function(err, itemArr) {
 
-  texts.find( { Book: "Libra" }, { _id: 0, FakeID: 0 } , function( err, cursor) {
-    displayContent(cursor.limit(5));
-  });
-}
+        var words = [];
+
+        for(var i=0; i<itemArr.length; i++) {
+
+          words.push(itemArr[i].Content);
+        }
+
+        // ultimately, send words to FE.
+        res.json(words);
+      })
+    })
+  })
+})
