@@ -9,9 +9,9 @@ class TestWords extends Component {
   }
 
 componentDidMount() {
-    fetch('/api/test-words')
+    fetch('/api/words')
       .then(res => res.json())
-      .then(words => this.setState({words}, () => console.log('Words fetched...', words)));
+      .then(words => this.setState({words}));
   }
 
 render() {

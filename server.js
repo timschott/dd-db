@@ -49,7 +49,15 @@ app.get('/api/customers-test', (req, res) => {
   res.json(customers);
 })
 
-app.get('/api/test-words', (req, res) => {
+app.get('/api/words', (req, res) => {
+
+  var params = req.query;
+
+  console.log(params);
+
+  if (params.book) {
+    console.log("they asked for this book: " + params.book);
+  }
 
   db.collection("texts", function(err, texts) {
 
