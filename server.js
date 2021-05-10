@@ -51,45 +51,67 @@ app.get('/api/customers-test', (req, res) => {
 
 app.get('/api/words', (req, res) => {
 
+  // query parameters
   var params = req.query;
 
-  var query = {}
+  // overall query
+  var conditions = {};
 
-  if (params.book) {
-
+  // containers for clauses
+  var and_clauses = [];
+  var or_clauses = [];
+  
+  // &book=[] (multi-val)
+  if (params.book) {   
+    if (typeof(params.book) == "object") {
+      for (var i = 0; i < params.book.length; i++) {
+        or_clauses.push({'Book': params.book[i]})
+      }
+      query += "]"
+    } else if (typeof(params.book) == "string") {
+      and_clauses.push({'Book': params.book})
+    }
   }
 
+  // &dialogue=T/F
   if (params.dialogue) {
-    var dialogue = 'Dialogue'
-    query[dialogue] = [];
-    query[dialogue] = (params.dialogue == "T") ? 1 : 0;
+    if (params.dialogue == "T") {
+      and_clauses.push({'Dialogue': '1'})
+    } else if (params.dialogue == "F") {
+      and_clauses.push({'Dialogue': '0'})
+    }
   }
 
+  if (and_clauses.length > 0) {
+    console.log("adding and clauses --" + JSON.stringify(and_clauses));
+    conditions['$and'] = and_clauses;
+  }
 
-  // essentially, need to make a json object of the query.
-  // filtering....
-  // -> Book=[]
-  // -> Dialogue=T/F
-  // -> Text="SnippetOfWord..."
+  if (or_clauses.length > 0) {
+    console.log("adding Or clauses --" + JSON.stringify(or_clauses));
+    conditions['$or'] = or_clauses;
+  }
 
-  // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+  console.log(JSON.stringify(conditions));
 
   db.collection("texts", function(err, texts) {
 
-    texts.find( { Book: "Libra", Dialogue: "1" }, { _id: 0} , function( err, cursor) {
+    texts.find( conditions, function( err, cursor) {
 
-      cursor.limit(5).toArray(function(err, itemArr) {
+      cursor.sort({"_id":1}).toArray(function(err, itemArr) {
 
-        var words = [];
+        console.log("# ITEMS " + itemArr.length);
 
-        for(var i=0; i<itemArr.length; i++) {
+          var words = [];
 
-          words.push(itemArr[i].Content);
-        }
+          for(var i=0; i<itemArr.length; i++) {
 
-        // ultimately, send words to FE.
-        res.json(words);
+            words.push(itemArr[i].Content);
+          }
+
+          // ultimately, send words to FE.
+          res.json(words);
+        })
       })
-    })
   })
 })
