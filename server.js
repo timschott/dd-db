@@ -67,7 +67,6 @@ app.get('/api/words', (req, res) => {
       for (var i = 0; i < params.book.length; i++) {
         or_clauses.push({'Book': params.book[i]})
       }
-      query += "]"
     } else if (typeof(params.book) == "string") {
       and_clauses.push({'Book': params.book})
     }
@@ -82,20 +81,12 @@ app.get('/api/words', (req, res) => {
     }
   }
 
-  if (and_clauses.length > 0) {
-    console.log("adding and clauses --" + JSON.stringify(and_clauses));
-    conditions['$and'] = and_clauses;
-  }
-
-  if (or_clauses.length > 0) {
-    console.log("adding Or clauses --" + JSON.stringify(or_clauses));
-    conditions['$or'] = or_clauses;
-  }
-
-  console.log(JSON.stringify(conditions));
+  // debug for query
+  console.log("full query: " + JSON.stringify(conditions));
 
   db.collection("texts", function(err, texts) {
 
+    // query using conditions
     texts.find( conditions, function( err, cursor) {
 
       cursor.sort({"_id":1}).toArray(function(err, itemArr) {
