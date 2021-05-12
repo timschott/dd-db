@@ -36,19 +36,6 @@ app.listen(port, () => {
   console.log(`App server now listening to port ${port}`);
 });
 
-// test homepage
-app.get('/api/customers-test', (req, res) => {
-  // inject content into FE - React should be able to template this into a file.
-
-  const customers = [
-    {id: 1, firstName: 'Tim', lastName: 'Schott'},
-    {id: 2, firstName: 'Will', lastName: 'Brayshaw'},
-    {id: 3, firstName: 'Bruce', lastName: 'Kay'},
-  ];
-
-  res.json(customers);
-})
-
 app.get('/api/words', (req, res) => {
 
   // query parameters
@@ -89,7 +76,7 @@ app.get('/api/words', (req, res) => {
     // query using conditions
     texts.find( conditions, function( err, cursor) {
 
-      cursor.sort({"_id":1}).toArray(function(err, itemArr) {
+      cursor.sort({"_id":1}).limit(100).toArray(function(err, itemArr) {
 
         console.log("# ITEMS " + itemArr.length);
 
