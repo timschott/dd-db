@@ -4,14 +4,17 @@ class TestWords extends Component {
   constructor() {
     super();
     this.state = {
-      words: []
+      res_data: {words:[], books:[]}
     };
   }
 
 componentDidMount() {
-    fetch('/api/words')
-      .then(res => res.json())
-      .then(words => this.setState({words}));
+  fetch('/api/words')
+  .then(res => res.json())
+  .then(res_data => {
+    console.log(JSON.stringify(res_data.words));
+    this.setState({res_data});
+  });
   }
 
 render() {
@@ -19,7 +22,7 @@ render() {
       <div>
         <h2 className="test-words-banner">Lads</h2>
         <ul>
-        {this.state.words.map(word => 
+        {this.state.res_data.words.map(word => 
           <li>{word}</li>
         )}
         </ul>

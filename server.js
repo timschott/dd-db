@@ -83,20 +83,33 @@ app.get('/api/words', (req, res) => {
         console.log("# ITEMS " + itemArr.length);
 
           // package these up into one json
+          var words_data = [];
           var words = [];
-          var ref_lines = [];
-          var books = [];
-          var mongo_ids = [];
+          var ref_lines_data = [];
+          var books_data = [];
+          var mongo_ids_data = [];
+
+          var res_data = {};
+
+          var container = {};
 
           for(var i=0; i<itemArr.length; i++) {
+            words_data.push(itemArr[i].Content);
             words.push(itemArr[i].Content);
-            books.push(itemArr[i].Book);
-            mongo_ids.push(itemArr[i]._id);
+            books_data.push(itemArr[i].Book);
+            mongo_ids_data.push(itemArr[i]._id);
             var fakeId = itemArr[i].FakeID.split("_")
-            ref_lines.push(gitsource + fakeId[0] + ".txt#" + fakeId[1]);
+            ref_lines_data.push(gitsource + fakeId[0] + ".txt#" + fakeId[1]);
           }
 
-          res.json(words);
+          res_data["words"] = words_data;
+          res_data["ref_lines"] = ref_lines_data;
+          res_data["books"] = books_data;
+          res_data["mongo_ids"] = mongo_ids_data;
+
+          container["res_data"] = res_data;
+          
+          res.json(res_data);
         })
       })
   })
