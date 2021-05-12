@@ -3,6 +3,8 @@ const express = require('express');
 
 const port = 8000;
 
+const gitsource = "https://github.com/timschott/dd-db/blob/main/corpus/txts(cleaned)/";
+
 // create new express app and save it as "app"
 const app = express()
 
@@ -80,14 +82,20 @@ app.get('/api/words', (req, res) => {
 
         console.log("# ITEMS " + itemArr.length);
 
+          // package these up into one json
           var words = [];
+          var ref_lines = [];
+          var books = [];
+          var mongo_ids = [];
 
           for(var i=0; i<itemArr.length; i++) {
-
             words.push(itemArr[i].Content);
+            books.push(itemArr[i].Book);
+            mongo_ids.push(itemArr[i]._id);
+            var fakeId = itemArr[i].FakeID.split("_")
+            ref_lines.push(gitsource + fakeId[0] + ".txt#" + fakeId[1]);
           }
 
-          // ultimately, send words to FE.
           res.json(words);
         })
       })
